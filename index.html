@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canım Anneme Özel 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+      --gold: #FFD700;
+      --pink: #FF6B9D;
+      --purple: #9B59B6;
+      --cyan: #00E5FF;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0a0010;
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    #stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      from { opacity: .2; transform: scale(1); }
+      to { opacity: 1; transform: scale(1.5); }
+    }
+    #landing, #celebration {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    #landing {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255, 107, 157, 0.25),
+        transparent 70%
+      );
+    }
+    .big-emoji {
+      font-size: 6rem;
+      animation: float 3s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes float {
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+    h1, .main-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      background: linear-gradient(
+        135deg, #FFD700, #FF6B9D, #B68CFF, #00E5FF
+      );
+      background-size: 250%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradient 5s ease infinite;
+    }
+    @keyframes gradient {
+      50% { background-position: 100%; }
+    }
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      line-height: 1.12;
+    }
+    .subtitle {
+      margin: 20px 0 30px;
+      color: rgba(255,255,255,.85);
+      font-size: clamp(1rem, 3vw, 1.3rem);
+      line-height: 1.7;
+    }
+    .card {
+      width: min(100%, 480px);
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 25px;
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 0 50px rgba(255,107,157,.2);
+      backdrop-filter: blur(15px);
+    }
+    .card p {
+      color: rgba(255,255,255,.9);
+      line-height: 1.8;
+    }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      transition: .3s;
+    }
+    .start-btn {
+      margin-top: 24px;
+      width: 100%;
+      padding: 17px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #FFD700, #FF6B9D);
+      color: #190D20;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+    .start-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 35px #FF6B9D66;
+    }
+    #celebration {
+      display: none;
+      padding: 45px 18px 20px;
+    }
+    .hero {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 35px 0;
+    }
+    .eyebrow {
+      color: #FFD700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: .85rem;
+      margin-bottom: 22px;
+    }
+    .main-title {
+      font-size: clamp(2.7rem, 9vw, 6rem);
+      line-height: 1.1;
+    }
+    .message {
+      max-width: 720px;
+      margin: 25px auto;
+      color: rgba(255,255,255,.88);
+      font-size: clamp(1rem, 3vw, 1.25rem);
+      line-height: 1.9;
+    }
+    .cake {
+      font-size: clamp(6rem, 20vw, 10rem);
+      margin: 20px 0;
+      display: inline-block;
+      filter: drop-shadow(0 0 25px #FF6B9D66);
+      animation: float 3s ease-in-out infinite;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin: 30px 0 25px;
+      color: #FFD700;
+    }
+    .wishes {
+      width: min(100%, 950px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+    .wish-card {
+      text-align: left;
+      padding: 25px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 22px;
+      transition: .3s;
+    }
+    .wish-card:hover {
+      transform: translateY(-5px);
+      border-color: #FF6B9D88;
+      background: rgba(255,255,255,.09);
+    }
+    .wish-icon {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 12px;
+    }
+    .wish-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    .wish-card p {
+      color: rgba(255,255,255,.75);
+      line-height: 1.8;
+      font-size: .92rem;
+    }
+    .english {
+      width: min(100%, 750px);
+      margin: 35px auto;
+      padding: 28px;
+      border-radius: 22px;
+      border: 1px solid #00E5FF55;
+      background: rgba(0,229,255,.05);
+    }
+    .english h3 {
+      color: #00E5FF;
+      margin-bottom: 15px;
+    }
+    .english p {
+      line-height: 1.9;
+      color: rgba(255,255,255,.85);
+    }
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 35px auto;
+    }
+    .ctrl-btn {
+      padding: 13px 22px;
+      border-radius: 30px;
+      border: 1px solid #ffffff33;
+      background: #ffffff0d;
+      color: white;
+      font-size: .95rem;
+    }
+    .ctrl-btn:hover {
+      background: #ffffff20;
+      transform: translateY(-2px);
+    }
+    .footer {
+      padding: 25px 10px;
+      color: #ffffff70;
+      line-height: 1.8;
+    }
+    #canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .float-emoji {
+      position: fixed;
+      bottom: -80px;
+      z-index: 1;
+      pointer-events: none;
+      animation: rise linear infinite;
+      opacity: .7;
+    }
+    @keyframes rise {
+      from { transform: translateY(0) rotate(0); }
+      to { transform: translateY(-120vh) rotate(360deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div id="stars"></div>
+<canvas id="canvas"></canvas>
+
+<section id="landing">
+  <div class="big-emoji">💐</div>
+  <h1>Canım Annem'e<br>Özel Bir Gün!</h1>
+  <p class="subtitle">
+    The most loving, caring and amazing mother in the whole world! ✨
+  </p>
+  <div class="card">
+    <p>
+      💖 Sevgili Anneciğim,<br>
+      Senin için sevgiyle dolu küçük bir doğum günü sürprizi hazırladım.
+      Hazırsan kutlamayı başlatalım!
+    </p>
+    <button class="start-btn" onclick="startCelebration()">
+      🎉 Sürprizi Aç!
+    </button>
+  </div>
+</section>
+
+<section id="celebration">
+  <div class="hero">
+    <div class="eyebrow">A Special Birthday Celebration For My Mom</div>
+    <h2 class="main-title">
+      İyi ki Doğdun<br>Canım Annem! 💖
+    </h2>
+    <p class="message">
+      Bize kattığın karşılıksız sevgi, sabır ve sonsuz şefkat için sana minnettarım.
+      Var oluşunla evimizi, yüreğimizi ve her anımızı güzelleştiriyorsun.
+      İyi ki benim annemsin, seninle gurur duyuyorum! 🌸
+    </p>
+    <div class="cake">🎂</div>
+    <h2 class="section-title">Sana En Güzel Dileklerimle</h2>
+  </div>
+
+  <div class="wishes">
+    <article class="wish-card">
+      <span class="wish-icon">💖</span>
+      <h3>Sonsuz Sevgi</h3>
+      <p>
+        Kalbinden geçen tüm güzel dileklerin gerçek olsun. Yüzündeki gülücük hiç eksik olmasın.
+      </p>
+    </article>
+
+    <article class="wish-card">
+      <span class="wish-icon">🌷</span>
+      <h3>Sağlık ve Huzur</h3>
+      <p>
+        Her zaman sağlıklı, huzurlu ve sevdiklerinle birlikte capcanlı, neşeli günler geçirmeni dilerim.
+      </p>
+    </article>
+
+    <article class="wish-card">
+      <span class="wish-icon">🏡</span>
+      <h3>Büyük Ailemiz</h3>
+      <p>
+        Evimizin neşesi, canımızın direği sensin. Hep birlikte nice mutlu yaşlara erişelim!
+      </p>
+    </article>
+
+    <article class="wish-card">
+      <span class="wish-icon">✨</span>
+      <h3>Mutluluk Dolu Anlar</h3>
+      <p>
+        Her yeni gün sana sürprizlerle, sevinçlerle ve hayallerinin gerçekleştiği anlarla gelsin.
+      </p>
+    </article>
+
+    <article class="wish-card">
+      <span class="wish-icon">🌸</span>
+      <h3>Sonsuz Sabır & Şefkat</h3>
+      <p>
+        Bize öğrettiğin tüm değerler, gösterdiğin sabır ve engin şefkatin için binlerce kez teşekkürler.
+      </p>
+    </article>
+
+    <article class="wish-card">
+      <span class="wish-icon">🌟</span>
+      <h3>İyi ki Varsın</h3>
+      <p>
+        Dünyadaki en harika anneye sahip olduğum için her gün kendimi çok şanslı hissediyorum!
+      </p>
+    </article>
+  </div>
+
+  <div class="english">
+    <h3>💌 A Special Message for the Best Mom</h3>
+    <p>
+      Dear Mom,<br>
+      Thank you for your unconditional love, endless warmth, and unwavering support.
+      You make our lives brighter every single day. I wish you a year filled with endless joy,
+      good health, and beautiful moments. You truly deserve all the happiness in the world!
+      <br><br>
+      <strong>Happy Birthday, Mom! 🎂💐 I Love You!</strong>
+    </p>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl-btn" onclick="fireConfetti()">
+      🎆 Konfeti Patlat!
+    </button>
+    <button class="ctrl-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      ⬆ Yukarı Çık
+    </button>
+    <button class="ctrl-btn" onclick="location.reload()">
+      🔄 Baştan Başlat
+    </button>
+  </div>
+
+  <div class="footer">
+    💖 Sonsuz sevgiyle, evladından canım annesine... 💖<br>
+    <span>Made with lots of love, just for you Mom! ✨</span>
+  </div>
+</section>
+
+<script>
+/* Yıldızlı gökyüzü */
+const stars = document.getElementById('stars');
+for (let i = 0; i < 150; i++) {
+  const star = document.createElement('div');
+  star.className = 'star';
+
+  const size = Math.random() * 3 + 1;
+  star.style.width = size + 'px';
+  star.style.height = size + 'px';
+  star.style.left = Math.random() * 100 + '%';
+  star.style.top = Math.random() * 100 + '%';
+  star.style.animationDelay = Math.random() * 3 + 's';
+  star.style.animationDuration = (Math.random() * 3 + 1) + 's';
+
+  stars.appendChild(star);
+}
+
+/* Uçuşan emojiler */
+function spawnEmojis() {
+  const emojis = ['🌷','💖','✨','🎉','🌸','🦋','⭐','💐','🎂','🥰'];
+
+  emojis.forEach((emoji, i) => {
+    const el = document.createElement('div');
+    el.className = 'float-emoji';
+    el.textContent = emoji;
+    el.style.left = Math.random() * 95 + '%';
+    el.style.fontSize = (Math.random() * 22 + 22) + 'px';
+    el.style.animationDuration = (Math.random() * 8 + 10) + 's';
+    el.style.animationDelay = (i * .7) + 's';
+
+    document.body.appendChild(el);
+  });
+}
+
+/* Kutlamayı başlat */
+function startCelebration() {
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById('celebration').style.display = 'block';
+
+  spawnEmojis();
+  fireConfetti(220);
+  window.scrollTo(0, 0);
+}
+
+/* Konfeti animasyonu */
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+let particles = [];
+let animationId = null;
+
+function resizeCanvas() {
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  canvas.width = window.innerWidth * dpr;
+  canvas.height = window.innerHeight * dpr;
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function fireConfetti(count = 150) {
+  const colors = [
+    '#FFD700','#FF6B9D','#00E5FF',
+    '#9B59B6','#FF8C42','#FFFFFF'
+  ];
+
+  for (let i = 0; i < count; i++) {
+    particles.push({
+      x: Math.random() * window.innerWidth,
+      y: -20 - Math.random() * window.innerHeight * .4,
+      vx: (Math.random() - .5) * 5,
+      vy: Math.random() * 4 + 2,
+      size: Math.random() * 7 + 3,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      rotation: Math.random() * 360,
+      spin: (Math.random() - .5) * 8,
+      life: 1
+    });
+  }
+
+  if (!animationId) animate();
+}
+
+function animate() {
+  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+  particles = particles.filter(p => p.life > 0 && p.y < window.innerHeight + 30);
+
+  for (const p of particles) {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += .06;
+    p.rotation += p.spin;
+    p.life -= .006;
+
+    ctx.save();
+    ctx.globalAlpha = Math.max(0, p.life);
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.rotation * Math.PI / 180);
+    ctx.fillStyle = p.color;
+    ctx.fillRect(-p.size / 2, -p.size / 3, p.size, p.size * .65);
+    ctx.restore();
+  }
+
+  if (particles.length) {
+    animationId = requestAnimationFrame(animate);
+  } else {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  }
+}
+
+/* Enter tuşuyla sürprizi aç */
+document.addEventListener('keydown', event => {
+  if (event.key === 'Enter' &&
+      document.getElementById('landing').style.display !== 'none') {
+    startCelebration();
+  }
+});
+</script>
+</body>
+</html>
